@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #1677ff;
-  --secondary-color: #4096ff;
-  --background-color: #f5f5f5;
-  --border-color: #e8e8e8;
+  --primary-color: #6366f1;
+  --secondary-color: #4f46e5;
+  --background-color: #f8fafc;
+  --border-color: #e2e8f0;
   --text-primary: #1f2937;
-  --text-secondary: #6b7280;
+  --text-secondary: #64748b;
   --sidebar-width: 260px;
 }
 
@@ -20,12 +20,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-primary);
+  background-color: var(--background-color);
 }
 
 /* 自定义滚动条样式 */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -33,12 +34,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d1d5db;
-  border-radius: 3px;
+  background: #cbd5e1;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: #94a3b8;
 }
 
 /* Antd 组件样式覆盖 */
@@ -46,10 +47,80 @@ body {
   background: var(--primary-color) !important;
 }
 
+.ant-btn-primary:hover {
+  background: var(--secondary-color) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.1);
+}
+
 .ant-input-search .ant-input {
   background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
 }
 
 .ant-input-search .ant-input:focus {
   background-color: white;
-} 
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+.ant-layout-sider {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+/* 消息气泡样式 */
+.message-bubble {
+  position: relative;
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  transition: all 0.2s;
+}
+
+.message-bubble:hover {
+  transform: translateY(-1px);
+}
+
+.message-bubble.assistant {
+  background: white;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.message-bubble.user {
+  background: var(--primary-color);
+  color: white;
+  margin-left: auto;
+  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.1);
+}
+
+/* 输入框样式 */
+.message-input {
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s;
+}
+
+.message-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
